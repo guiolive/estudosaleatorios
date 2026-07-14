@@ -655,6 +655,150 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
+  <article class="chapter" data-num="03" data-tag="Prática &amp; memória">
+    <p class="ch-kicker">Neurociência · Aprendizado</p>
+    <h1>Como o cérebro aprende</h1>
+    <p class="ch-sub">Terry Sejnowski: um <strong>único algoritmo</strong> move toda a motivação, e é a <strong>prática</strong> — não a teoria — que grava.</p>
+
+    <div class="curve" aria-label="O laço do aprendizado: prever, agir, comparar, atualizar">
+      <svg viewBox="0 0 680 300" role="img" aria-label="Ciclo: prevejo a recompensa, ajo, comparo com o esperado, atualizo a conexão">
+        <defs>
+          <marker id="ah3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/>
+          </marker>
+        </defs>
+        <g fill="none" stroke="var(--muted)" stroke-width="2">
+          <path d="M 340,90 A 58,58 0 0 1 398,148" marker-end="url(#ah3)"/>
+          <path d="M 398,148 A 58,58 0 0 1 340,206" marker-end="url(#ah3)"/>
+          <path d="M 340,206 A 58,58 0 0 1 282,148" marker-end="url(#ah3)"/>
+          <path d="M 282,148 A 58,58 0 0 1 340,90" marker-end="url(#ah3)"/>
+        </g>
+        <text class="lbl" x="340" y="150" text-anchor="middle" style="fill:var(--f-warn);font-weight:600">erro de</text>
+        <text class="lbl" x="340" y="165" text-anchor="middle" style="fill:var(--f-warn);font-weight:600">previsão</text>
+        <text class="lbl" x="340" y="60" text-anchor="middle" style="fill:var(--f-key);font-weight:600">① prevejo a recompensa</text>
+        <text class="lbl" x="418" y="152" text-anchor="start" style="fill:var(--f-focus);font-weight:600">② ajo</text>
+        <text class="lbl" x="340" y="236" text-anchor="middle" style="fill:var(--title);font-weight:600">③ veio o que eu esperava?</text>
+        <text class="lbl" x="262" y="152" text-anchor="end" style="fill:var(--f-apply);font-weight:600">④ atualizo a conexão</text>
+      </svg>
+      <p class="c-cap">a diferença entre o esperado e o que veio é a <strong>dopamina</strong>, o sinal que ajusta a próxima tentativa</p>
+    </div>
+
+    <h2>17 · O cérebro roda receitas</h2>
+    <p class="lead">Conhecer as peças (neurônios, sinapses) não explica como o todo funciona.</p>
+    <p>Entre o <span class="k-foco">nível de implementação</span> (a química do neurônio) e o <span class="k-marca">comportamento</span> existe um andar intermediário: o <strong>nível dos algoritmos</strong>, receitas que os circuitos executam. Descobrir essas receitas é o que finalmente conecta “um pedaço de carne na cabeça” ao que ele faz.</p>
+    <div class="callout term">
+      <p class="c-label">A analogia</p>
+      <p>Um algoritmo é como uma receita de bolo: os mesmos ingredientes, na <strong>ordem errada</strong>, viram outra coisa. O aprendizado tem uma receita, e ela é surpreendentemente simples.</p>
+    </div>
+
+    <h2>18 · Um único algoritmo: prever a próxima recompensa</h2>
+    <p class="lead">A mesma regra que move o tênis, a carreira e a escolha do restaurante.</p>
+    <p>A cada ação, o cérebro <strong>prevê</strong> a recompensa que ela deve trazer. Depois compara com o que de fato veio. Essa diferença — o <span class="k-dopa">erro de previsão</span> — ajusta as sinapses (via <span class="k-dopa">dopamina</span>) para a próxima tentativa ser um pouco melhor. Repetindo, você constrói ao longo da vida uma <strong>função-valor</strong>: o mapa do que é bom ou ruim para você.</p>
+    <div class="facts">
+      <div class="f-row"><div class="f-lab">Onde</div><div class="f-val">Núcleos da base (<span class="k-foco">gânglios basais</span>) em diálogo com o córtex, inclusive o <span class="k-marca">pré-frontal</span> — o mesmo circuito para aprender um <em>saque</em> e para aprender a <em>pensar</em>.</div></div>
+      <div class="f-row"><div class="f-lab">É permanente</div><div class="f-val">A função-valor não se apaga: volte à quadra depois de meses e ela ainda está lá.</div></div>
+      <div class="f-row"><div class="f-lab">O eco em IA</div><div class="f-val">É <strong>a mesma regra</strong> (aprendizado por reforço) que fez o AlphaGo vencer o campeão mundial de Go.</div></div>
+    </div>
+
+    <h2>19 · A punição ensina em uma tentativa</h2>
+    <p class="lead">Recompensas pequenas te aproximam aos poucos. A dor grava de primeira.</p>
+    <p>Recompensa é aprendizado por <strong>tentativa e erro</strong>, muitas repetições encostando cada vez mais perto. Já a punição forte é <strong>aprendizado de uma tentativa</strong>: um rato leva um choque uma vez e não esquece nunca; uma relação ruim te ensina algo para o resto da vida (o extremo disso é o TEPT).</p>
+    <div class="stats">
+      <div class="stat dopa"><div class="n">1<small> tentativa</small></div><div class="l">basta para a punição forte gravar; a recompensa precisa de muitas</div></div>
+      <div class="stat key"><div class="n">↑</div><div class="l">boa parte do córtex pré-frontal é dedicada ao aprendizado <strong>social</strong>: língua, cultura, o que se espera de você</div></div>
+    </div>
+
+    <h2>20 · Dois sistemas: o cognitivo e o procedural</h2>
+    <p class="lead">Onde este capítulo fala direto com quem quer sair do tutorial e construir.</p>
+    <div class="duo">
+      <div class="d-card fixed">
+        <span class="d-badge">Cognitivo · cortical</span>
+        <h4>Saber sobre</h4>
+        <p>Fatos, aula, o texto do livro. Fica guardado, mas <strong>não aparece sozinho</strong> quando você precisa resolver algo novo.</p>
+      </div>
+      <div class="d-card plastic">
+        <span class="d-badge">Procedural · gânglios basais</span>
+        <h4>Saber fazer</h4>
+        <p>Automático, rápido, robusto. Só se instala <strong>fazendo</strong> — errando e ajustando.</p>
+      </div>
+    </div>
+    <p>Ninguém aprende a jogar tênis lendo um livro de tênis. Na escola, a aula é o sistema cognitivo; o <strong>dever de casa é o procedural</strong> — resolver os problemas <em>é</em> o aprendizado. Memorizar as equações não é entender como usá-las.</p>
+    <div class="callout key">
+      <p class="c-label">Por que testar-se funciona</p>
+      <p>O teste não é só avaliação: é <strong>aprendizado ativo</strong>. Tentar resolver sozinho expõe os erros — e é corrigindo o erro que a sinapse muda. Ouvir a resposta pronta guarda um fato; <strong>não</strong> instala a habilidade.</p>
+    </div>
+    <div class="callout apply">
+      <p class="c-label">Aplicar</p>
+      <p>Se você já viu um conceito 3× sem escrever código sobre ele, o problema não é falta de teoria: é que o sistema <strong>procedural</strong> nunca foi acionado. Feche o vídeo e resolva um problema pequeno que te obrigue a errar. O desconforto é o sinal de que está pegando.</p>
+    </div>
+    <div class="callout term">
+      <p class="c-label">Generalizar com um exemplo</p>
+      <p>O cérebro é ótimo em generalizar: um restaurante novo e você já sabe o roteiro. Não decora casos, extrai a <strong>regra</strong>. É o que separa entender de papaguear.</p>
+    </div>
+
+    <h2>21 · Você aprende dormindo</h2>
+    <p class="lead">A prática abre a janela; o sono grava o que ficou marcado.</p>
+    <p>Durante o sono, o <span class="k-foco">hipocampo</span> reproduz as experiências do dia e, através dos <strong>fusos do sono</strong> (ondas que giram pelo córtex), amassa essa vivência na memória de longo prazo — sem sobrescrever o que você já sabia.</p>
+    <div class="stats">
+      <div class="stat focus"><div class="n">2×</div><div class="l">o zolpidem (Ambien) dobra os fusos do sono e a recordação do que foi estudado antes da dose</div></div>
+      <div class="stat apply"><div class="n">+</div><div class="l">exercício durante o dia aumenta a quantidade de fusos à noite</div></div>
+    </div>
+    <div class="callout warn">
+      <p class="c-label">Você paga o pianista</p>
+      <p>O mesmo Ambien que consolida o que veio <strong>antes</strong> pode <strong>apagar</strong> o que acontece <strong>depois</strong> da dose. Mexer numa alavanca do cérebro sempre cobra em outra: comportamento (sono + exercício) vence droga. <span style="color:var(--muted)">Informação, não recomendação; zolpidem é prescrição.</span></p>
+    </div>
+
+    <h2>22 · Energia: mitocôndria e velocidade cognitiva</h2>
+    <p class="lead">Aprender custa energia, e a fonte dessa energia se treina.</p>
+    <p>A moeda da célula é o ATP, produzido pelas <strong>mitocôndrias</strong>. Com a idade elas rendem menos, e aprender “pesa” mais. O melhor remédio para repô-las é o mais barato: <span class="k-alerta">exercício</span>. E, como no tênis, o ganho vem de empurrar o sistema um pouco além do confortável.</p>
+    <div class="steps">
+      <div class="step"><div class="st-n">1</div><div>
+        <h4 class="k-alerta">Estresse curto e controlado</h4>
+        <p>Sejnowski corre <strong>tiros de ~10 s</strong> na praia, alterna com trote. O pico breve é o que sinaliza ao corpo para melhorar, não o ritmo constante.</p>
+      </div></div>
+      <div class="step"><div class="st-n">2</div><div>
+        <h4 class="k-foco">Velocidade cognitiva</h4>
+        <p>Ler um pouco <strong>mais rápido</strong> que o ritmo reflexo — ainda retendo — te coloca na zona de aprendizado. São “tiros” cognitivos, o mesmo princípio dos intervalos.</p>
+      </div></div>
+      <div class="step"><div class="st-n">3</div><div>
+        <h4 class="k-marca">Reserva</h4>
+        <p>Exercitar corpo e mente é guardar reserva para depois. Mais escolaridade se associa a início <strong>mais tardio</strong> de Alzheimer — provável reserva cognitiva. <span style="color:var(--muted)">Observação populacional, não causa provada.</span></p>
+      </div></div>
+    </div>
+
+    <h2>23 · Quando travar, pare</h2>
+    <p class="lead">A mente vagando resolve o que a mente forçando não resolve.</p>
+    <p>Bateu num muro? <strong>Pare</strong>. Lave a louça, ande no quarteirão — a “mente vagando” (<em>mind wandering</em>) costuma trazer o “aha”. E o mais confiável de todos: pense no problema <strong>antes de dormir</strong>. O cérebro trabalha nele à noite e a solução costuma aparecer ao acordar.</p>
+    <div class="callout apply">
+      <p class="c-label">Aplicar</p>
+      <p>Travou num bug às 23h? Descreva o problema em voz alta, feche o notebook e durma. Não troque esse tempo por rolagem de tela: aí o cérebro trabalha no feed, não no seu código.</p>
+    </div>
+
+    <h2>24 · Resumo</h2>
+    <div class="takeaways">
+      <p class="tk-label">Aprender em 7 linhas</p>
+      <ol>
+        <li>O cérebro roda um <strong>algoritmo</strong>: prever a recompensa, comparar, ajustar pelo erro.</li>
+        <li>Esse erro de previsão é a <strong>dopamina</strong>; repetido, vira sua <strong>função-valor</strong>.</li>
+        <li>Punição forte ensina em <strong>uma tentativa</strong>; recompensa, aos poucos.</li>
+        <li>Há dois sistemas: saber (cognitivo) e <strong>saber fazer</strong> (procedural). Só o segundo se instala fazendo.</li>
+        <li><strong>Testar-se</strong> é aprender, não só medir. Feche o tutorial e resolva.</li>
+        <li>A gravação acontece <strong>no sono</strong>; exercício de dia aumenta os fusos.</li>
+        <li>Travou? <strong>Pare, mova-se, durma</strong> com o problema na cabeça.</li>
+      </ol>
+    </div>
+
+    <div class="sources">
+      <h2>Referências</h2>
+      <ul>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/8774460/" target="_blank" rel="noopener"><span class="s-t">Montague, Dayan &amp; Sejnowski (1996)</span></a> · aprendizado por diferença temporal: a dopamina como erro de previsão · J Neurosci 16(5):1936–1947 · PMID 8774460</li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10557337/" target="_blank" rel="noopener"><span class="s-t">van Praag, Christie, Sejnowski &amp; Gage (1999)</span></a> · correr aumenta neurogênese, aprendizado e LTP · PNAS 96:13427–431 · PMID 10557337</li>
+        <li><a href="https://www.jneurosci.org/content/33/10/4494" target="_blank" rel="noopener"><span class="s-t">Mednick et al. (2013)</span></a> · fusos do sono e memória: o papel do zolpidem · J Neurosci 33(10):4494–4504</li>
+        <li><a href="https://www.coursera.org/learn/learning-how-to-learn" target="_blank" rel="noopener"><span class="s-t">Learning How to Learn</span></a> · curso gratuito de Barbara Oakley &amp; Terry Sejnowski (Coursera)</li>
+      </ul>
+    </div>
+  </article>
+
 </template>
 
 <script>

@@ -9,6 +9,9 @@ Os números e afirmações do guia vêm destes materiais. Já estão embutidos e
   "Controlling Your Dopamine for Motivation, Focus & Satisfaction"
   https://www.hubermanlab.com/episode/essentials-controlling-your-dopamine-for-motivation-focus-satisfaction
   (versão longa / ep. 39: https://www.hubermanlab.com/episode/controlling-your-dopamine-for-motivation-focus-and-satisfaction )
+- **Cap. 03 — Como o cérebro aprende:** Huberman Lab, entrevista com Dr. Terry Sejnowski,
+  "How to Improve at Learning Using Neuroscience & AI"
+  https://www.hubermanlab.com/episode/dr-terry-sejnowski-how-to-improve-at-learning-using-neuroscience-ai
 
 ## Literatura primária
 - Recanzone, Merzenich et al. (1992) — reorganização da mão na área 3b.
@@ -20,6 +23,13 @@ Os números e afirmações do guia vêm destes materiais. Já estão embutidos e
   https://pubmed.ncbi.nlm.nih.gov/12939407/
 - Šrámek et al. (2000) — imersão em água fria; dopamina +250% (≈2,5×) a 14 °C.
   Eur J Appl Physiol 81(5):436–42 · PMID 10751106 · https://pubmed.ncbi.nlm.nih.gov/10751106/
+- Montague, Dayan & Sejnowski (1996) — aprendizado por diferença temporal; dopamina como
+  erro de previsão (base da "função-valor"). J Neurosci 16(5):1936–1947 · PMID 8774460 ·
+  https://pubmed.ncbi.nlm.nih.gov/8774460/
+- van Praag, Christie, Sejnowski & Gage (1999) — correr aumenta neurogênese, aprendizado e LTP
+  em camundongos. PNAS 96:13427–431 · PMID 10557337 · https://pubmed.ncbi.nlm.nih.gov/10557337/
+- Mednick et al. (2013) — fusos do sono e memória; zolpidem aumenta fusos e a recordação.
+  J Neurosci 33(10):4494–4504 · https://www.jneurosci.org/content/33/10/4494
 
 ## Dados-chave da Parte II (já no guia)
 - Aumento de dopamina acima da base: chocolate 1,5× · sexo 2× · exercício ~2× (se gosta) ·
