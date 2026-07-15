@@ -378,7 +378,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
      ============================================================ -->
 <template id="seed">
 
-  <article class="chapter" data-num="01" data-tag="Foco &amp; atenção">
+  <article class="chapter" data-key="neuroplasticidade" data-num="01" data-tag="Foco &amp; atenção">
     <p class="ch-kicker">Neurociência · Parte I</p>
     <h1>Neuroplasticidade</h1>
     <p class="ch-sub">O cérebro adulto muda. Mas, depois dos ~25 anos, só sob um conjunto químico preciso.</p>
@@ -533,7 +533,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-num="02" data-tag="Busca &amp; impulso">
+  <article class="chapter" data-key="dopamina" data-num="02" data-tag="Busca &amp; impulso">
     <p class="ch-kicker">Neurociência · Parte II</p>
     <h1>Dopamina &amp; Motivação</h1>
     <p class="ch-sub">Não é a química do prazer, é a química da <strong>procura</strong>. E funciona por uma dança entre pico e linha de base.</p>
@@ -663,7 +663,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-num="03" data-tag="Prática &amp; memória">
+  <article class="chapter" data-key="aprendizado" data-num="03" data-tag="Prática &amp; memória">
     <p class="ch-kicker">Neurociência · Aprendizado</p>
     <h1>Como o cérebro aprende</h1>
     <p class="ch-sub">Terry Sejnowski: um <strong>único algoritmo</strong> move toda a motivação, e é a <strong>prática</strong> — não a teoria — que grava.</p>
@@ -807,7 +807,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-seed="autocontrole" data-num="04" data-tag="Autocontrole &amp; metas">
+  <article class="chapter" data-key="autocontrole" data-num="04" data-tag="Autocontrole &amp; metas">
     <p class="ch-kicker">Psicologia · Autocontrole</p>
     <h1>Autocontrole &amp; motivação</h1>
     <p class="ch-sub">Kentaro Fujita: autocontrole não é um músculo que se esgota, é uma <strong>caixa de ferramentas</strong> que se aprende. E a ferramenta mestra é a <strong>distância</strong>.</p>
@@ -1029,7 +1029,10 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
 (function(){
   'use strict';
 
-  var LS_CH='biblioteca:chapters', LS_LAST='biblioteca:last', LS_READ='biblioteca:read', LS_SEEDED='biblioteca:seeded';
+  var LS_CH='biblioteca:chapters', LS_LAST='biblioteca:last', LS_READ='biblioteca:read';
+  /* chaves dos capítulos-semente já importados — permite publicar capítulos
+     novos sem apagar as edições locais nem ressuscitar os que foram excluídos */
+  var LS_SEEN='biblioteca:seedkeys';
 
   var reader=document.getElementById('reader'),
       toc=document.getElementById('toc'),
@@ -1061,6 +1064,8 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
   /* ---------- persistência ---------- */
   function loadCh(){ try{ return JSON.parse(localStorage.getItem(LS_CH)||'null'); }catch(e){ return null; } }
   function saveCh(){ localStorage.setItem(LS_CH, JSON.stringify(chapters)); }
+  function loadSeen(){ try{ return JSON.parse(localStorage.getItem(LS_SEEN)||'null'); }catch(e){ return null; } }
+  function saveSeen(k){ localStorage.setItem(LS_SEEN, JSON.stringify(k)); }
   function getRead(){ try{ return JSON.parse(localStorage.getItem(LS_READ)||'[]'); }catch(e){ return []; } }
   function markRead(id){ var r=getRead(); if(r.indexOf(id)===-1){ r.push(id); localStorage.setItem(LS_READ,JSON.stringify(r)); } }
 
@@ -1075,52 +1080,29 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
   }
 
   /* ---------- semente inicial ---------- */
-  function seedArticles(){ return document.getElementById('seed').content.querySelectorAll('article'); }
-
-  // monta um capítulo (objeto de dados) a partir de um <article> do template
-  function buildFromArticle(a){
-    var clone=a.cloneNode(true);
-    var txt=function(sel){ var el=clone.querySelector(sel); return el?el.textContent.trim():''; };
-    var kicker=txt('.ch-kicker'), title=txt('h1'), sub=txt('.ch-sub');
-    ['.ch-kicker','h1','.ch-sub','.ch-meta'].forEach(function(sel){ var el=clone.querySelector(sel); if(el) el.parentNode.removeChild(el); });
-    // decodifica entidades da etiqueta (ex.: &amp; -> &)
-    var dec=document.createElement('textarea'); dec.innerHTML=a.getAttribute('data-tag')||'';
-    return {
-      id:uid(),
-      kicker:kicker,
-      num:a.getAttribute('data-num')||'',
-      tag:dec.value,
-      title:title,
-      sub:sub,
-      body:clone.innerHTML.trim()
-    };
-  }
-
-  function getSeeded(){ try{ return JSON.parse(localStorage.getItem(LS_SEEDED)||'[]'); }catch(e){ return []; } }
-  function setSeeded(a){ localStorage.setItem(LS_SEEDED, JSON.stringify(a)); }
-
-  // instalação nova: cria todos os capítulos-semente e registra as chaves já aplicadas
   function seed(){
-    var list=[], keys=[];
-    Array.prototype.forEach.call(seedArticles(),function(a){
-      list.push(buildFromArticle(a));
-      var k=a.getAttribute('data-seed'); if(k) keys.push(k);
+    var tpl=document.getElementById('seed');
+    var arts=tpl.content.querySelectorAll('article');
+    var list=[];
+    Array.prototype.forEach.call(arts,function(a){
+      var clone=a.cloneNode(true);
+      var txt=function(sel){ var el=clone.querySelector(sel); return el?el.textContent.trim():''; };
+      var kicker=txt('.ch-kicker'), title=txt('h1'), sub=txt('.ch-sub');
+      ['.ch-kicker','h1','.ch-sub','.ch-meta'].forEach(function(sel){ var el=clone.querySelector(sel); if(el) el.parentNode.removeChild(el); });
+      // decodifica entidades da etiqueta (ex.: &amp; -> &)
+      var dec=document.createElement('textarea'); dec.innerHTML=a.getAttribute('data-tag')||'';
+      list.push({
+        id:uid(),
+        key:a.getAttribute('data-key')||'',
+        kicker:kicker,
+        num:a.getAttribute('data-num')||'',
+        tag:dec.value,
+        title:title,
+        sub:sub,
+        body:clone.innerHTML.trim()
+      });
     });
-    setSeeded(keys);
     return list;
-  }
-
-  // biblioteca já existente: acrescenta só capítulos-semente novos (com data-seed
-  // ainda não aplicado), sem tocar no que o usuário já editou.
-  function migrateSeeds(){
-    var seeded=getSeeded(), added=false;
-    Array.prototype.forEach.call(seedArticles(),function(a){
-      var k=a.getAttribute('data-seed');
-      if(!k || seeded.indexOf(k)!==-1) return;
-      chapters.push(buildFromArticle(a));
-      seeded.push(k); added=true;
-    });
-    if(added){ setSeeded(seeded); saveCh(); }
   }
 
   /* ---------- render ---------- */
@@ -1301,8 +1283,31 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
 
   /* ---------- init ---------- */
   chapters=loadCh();
-  if(!chapters || !chapters.length){ chapters=seed(); saveCh(); }
-  else { migrateSeeds(); }
+  var seedList=seed();
+
+  if(!chapters || !chapters.length){
+    /* 1ª visita: importa a semente inteira */
+    chapters=seedList;
+    saveSeen(seedList.map(function(s){ return s.key; }).filter(Boolean));
+    saveCh();
+  }else{
+    /* já existe lista salva: mescla só os capítulos-semente inéditos */
+    var seen=loadSeen();
+    if(seen===null){
+      /* migração (quem salvou antes das chaves existirem): considera importado
+         todo capítulo-semente cujo título já está na lista salva */
+      seen=seedList.filter(function(s){
+        return chapters.some(function(c){ return c.title===s.title; });
+      }).map(function(s){ return s.key; });
+    }
+    var novos=0;
+    seedList.forEach(function(s){
+      if(s.key && seen.indexOf(s.key)===-1){ chapters.push(s); seen.push(s.key); novos++; }
+    });
+    saveSeen(seen);
+    if(novos) saveCh();
+  }
+
   renderReader(); buildTOC();
   var start=location.hash.replace('#','');
   if(!byId(start)) start=localStorage.getItem(LS_LAST);
