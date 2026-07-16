@@ -1,4 +1,4 @@
-# Guia de Estudo — Neuroplasticidade & Dopamina (Huberman Lab)
+# Guia de Estudo — Neuroplasticidade & Dopamina
 
 ## O que é este projeto
 Uma página HTML única, em **pt-BR**, que sintetiza dois episódios do *Huberman Lab Essentials*
