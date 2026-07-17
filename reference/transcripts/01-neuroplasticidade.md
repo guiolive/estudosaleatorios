@@ -277,6 +277,15 @@ de memória espacial (sequência de luzes), **20 min de NSDR ou cochilo raso** i
 elevaram significativamente o aprendizado, mais do que só uma boa noite de sono depois. Dá para
 **acelerar** o aprendizado com NSDR/cochilos ≤90 min.
 
+> ⚠️ **RESSALVA (verificação, jul/2026) — esta afirmação do episódio NÃO se sustenta.**
+> O paper é Eichenlaub et al., *Cell Rep.* 2020;31(5):107581 (PMID 32375031), "Replay of Learned Neural
+> Firing Sequences during Rest in Human Motor Cortex". Divergências: é tarefa **motora** (cursor por BCI),
+> não memória espacial; são **4 alvos**, não 15–16 luzes; **n=2** pacientes com eletrodos intracorticais,
+> não "pessoas"; **não há protocolo de NSDR** (só "feche os olhos e relaxe" por 20–30 min); e sobretudo
+> **não há grupo de sono nem comparação repouso-vs-sono** — logo, "melhor que uma noite de sono" não está
+> no paper nem em nenhum outro localizado. A literatura real diz **repouso ≈ cochilo** (Wamsley & Summer,
+> *Learn Mem.* 2021;28(6):195–203, PMID 34011516), nunca repouso > sono. O guia foi corrigido.
+
 ## How Much Learning Is Enough? / Optic Flow / Mind Drift (1:16:22)
 Há quem faça vários bouts de 90 min/dia (3–4), alguns com NSDR entre eles. Muitos se recuperam melhor com
 atividade motora em **optic flow autogerado** (caminhar, correr, pedalar): o oposto da janela estreita de
