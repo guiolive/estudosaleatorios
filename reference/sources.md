@@ -161,6 +161,68 @@ Os números e afirmações do guia vêm destes materiais. Já estão embutidos e
 - Lepper, Greene & Nisbett (1973) — superjustificação: só a recompensa *esperada* corrói o interesse
   intrínseco (surpresa não). JPSP 28(1):129–137 · DOI 10.1037/h0035519 (sem PMID)
 
+### Cap. 05 — Nicotina (verificado 2026-07; ver ressalvas)
+Transcrição em `reference/transcripts/05-nicotina.md`. Episódio-base: Huberman Lab, "Nicotine's
+Effects on the Brain & Body & How to Quit Smoking or Vaping".
+- Mineur et al. (2011) — nicotina reduz ingestão via **POMC**. Science 332(6035):1330–1332 · PMID
+  21659607. ⚠️ **O episódio erra o receptor:** o efeito de apetite é pela subunidade **β4 (α3β4)**,
+  não α4β2 (derrubar β4 aboliu o efeito; β2 não mudou). α4β2 = recompensa/vício; α3β4 = fome.
+- Perkins et al. (1989) — gasto energético +~5% em repouso e ~12% em atividade leve; transitório.
+  N Engl J Med 320(14):898–903 · PMID 2648151. ("2–5%" do episódio é o piso; ~5% é o valor mais citado.)
+- Benowitz, Hukkanen & Jacob (2009) — meia-vida da nicotina ~2 h (cotinina ~16 h). Handb Exp
+  Pharmacol 192:29–60 · PMID 19184645.
+- Domino, Hornbach & Demana (1993) — nicotina em solanáceas: **ng/g** (beringela ~100 ng/g). N Engl
+  J Med 329(6):437–438 · PMID 8326992. ~10 kg de beringela = a nicotina de 1 cigarro. Irrelevante como fonte.
+- Harte & Meston (2008) — dose aguda de nicotina reduz ~23% a resposta erétil em não fumantes (duplo-
+  cego). J Sex Med 5(1):110–121 · PMID 17971108. ⚠️ É atenuação **aguda da ereção** (fluxo/tumescência),
+  **não** encolhimento anatômico do pênis, como a frase "reduz penile girth" sugere.
+- Newhouse et al. (2012) — adesivo 15 mg/6 meses em comprometimento cognitivo leve (n=74): melhora em
+  **testes** de atenção/memória, **sem** mudança clínica global; sem dado sobre progressão a demência.
+  Neurology 78(2):91–101 · PMID 22232050. ⚠️ Sinal preliminar, **não** "proteção contra Alzheimer".
+- Fang et al. (2022) — goma 2 mg melhora rebatida (33% vs 24,5%, p=0,04) e tempo de reação, **sem** ganho
+  de força; **n=13**, ensaio cruzado. Int J Environ Res Public Health 19(1):515 · PMID 35010774. Efeito
+  pequeno; sugestivo, não conclusivo. (Confirma que o "estudo do beisebol" citado existe.)
+- St Helen et al. (2016) — farmacocinética: **cigarro** atinge o pico de nicotina antes (Tmáx ~2,7 min) e
+  mais alto (Cmáx ~20 ng/mL) que vapes típicos (~6,5 min / ~6 ng/mL). Addiction 111(3):535–544 · PMID
+  26430813. ⚠️⚠️ **Contradiz o episódio:** o vape **não** entrega nicotina mais rápido que o cigarro. O
+  princípio "subida mais rápida vicia mais" é válido; a aplicação específica ao vape-vs-cigarro, não.
+- Spiegel, Frischholz, Fleiss & Spiegel (1993) — auto-hipnose de sessão única: **23% abstinentes em 2
+  anos** (n=226). Am J Psychiatry 150(7):1090–1097 · PMID 8317582. ⚠️ É follow-up de **2 anos** (não 1), e
+  **sem grupo-controle randomizado** (coorte tratada, não RCT limpo).
+- Hughes, Keely & Naud (2004) — sem ajuda, **3–5%** de sucesso por tentativa; recaída concentrada nos
+  primeiros ~8 dias. Addiction 99(1):29–38 · PMID 14678060. ⚠️ "75% recaem na 1ª semana" **infla** (real
+  ~24–51%); "65% recaem em um ano" **sem fonte** localizada.
+- Hajizadeh et al. (2023, Cochrane) — bupropiona aumenta a cessação **~60%** (RR 1,64; ~12%→~19% em 6
+  meses), evidência de alta certeza. CD000031.pub6. ⚠️ **Não** é "5%→20%" (não quadruplica). Risco de
+  convulsão ~0,1% (1/1.000).
+- Theodoulou et al. (2023, Cochrane) — **combinar** adesivo + forma rápida (goma) > forma única (RR 1,27),
+  alta certeza. CD013308.pub2. Sustenta a estratégia de rodízio/combinação de reposição.
+- Weitkunat, Sanders & Lee (2007) — meta-análise: tabaco sem fumaça e câncer oral OR ~1,87 (bruto), ~1,0
+  ajustado por álcool+fumo; snus ~nulo. BMC Public Health 7:334 · PMID 18005437. Complementar: Boffetta et
+  al. (2008), Lancet Oncol 9(7):667–75, PMID 18598931. ⚠️⚠️ **Derruba o "50× de câncer de boca" do
+  episódio** — número sem respaldo no Ocidente (produtos do sul da Ásia com areca têm risco maior, mas outra coisa).
+- Doll, Peto, Boreham & Sutherland (2004) — fumantes perdem em média **~10 anos** de vida; parar antes dos
+  40 evita ~90% do risco. BMJ 328(7455):1519 · PMID 15213107. Confirmado por Jha et al. (2013), NEJM
+  368(4):341–350, PMID 23343063. ⚠️ **Corrige "14 anos por maço/dia"** — cifra sem base linear validada.
+- Kahler et al. (2010) — álcool aumenta o risco de recaída (dose-dependente; ~40% dos deslizes ocorrem
+  bebendo; efeito varia com o tempo de abstinência). Nicotine Tob Res 12(7):781–785 · PMID 20507898.
+
+**Erros/exageros do episódio corrigidos no guia (callouts "onde a versão popular erra/exagera"):**
+- **CO₂ vs CO:** o episódio diz que o "dióxido de carbono" liga a hemoglobina e é carcinógeno. **Errado.**
+  Quem sequestra a hemoglobina (carboxi-hemoglobina) é o **monóxido de carbono (CO)**. CO₂ não é
+  carcinógeno. E o número correto é **>7.000 substâncias / ~70 carcinógenos** (não "4.000 toxinas"); a
+  amônia é aditivo, não carcinógeno por si. (CDC/FDA/Surgeon General.)
+- **Receptor do apetite:** α4β2 → **α3β4** (ver Mineur 2011 acima).
+- **Vape "mais rápido" que cigarro:** não sustentado pela farmacocinética (ver St Helen 2016).
+- **50× câncer de boca; 14 anos/maço; 23% em "1 ano"; 5%→20% bupropiona:** todos ajustados acima.
+- **~68% querem parar** (CDC MMWR 2024), não "70–75%".
+- **Vaping × depressão:** associação sobretudo **transversal e bidirecional** (causalidade reversa
+  provável); o guia apresenta como correlação, não como o vape "causando" depressão.
+
+**Não aprofundados (fora do escopo do capítulo):** Alpha-GPC/TMAO/alho — Lee et al. (2021, JAMA Netw Open,
+PMID 34817582) associou α-GPC a AVC, mas em **doses terapêuticas (~1200 mg, meses)**, **sem medir TMAO**;
+a "compensação com alho" é especulativa. Ficou de fora para manter o foco na nicotina.
+
 ## Dados-chave da Parte II (já no guia)
 - Aumento de dopamina acima da base: chocolate 1,5× · sexo 2× · exercício ~2× (se gosta) ·
   nicotina fumada 2,5× · cocaína 2,5× · anfetamina 10×.

@@ -15,9 +15,10 @@ Abrir no navegador funciona. Deploy é automático via GitHub Pages.
 - **03 · Como o cérebro aprende** (17–24) — Terry Sejnowski — **AINDA NO FORMATO DECK; falta aprofundar
   e falta limpar os travessões.** Precisa da transcrição.
 - **04 · Autocontrole & motivação** (25–32) — Kentaro Fujita
+- **05 · Nicotina** (33–40) — "Nicotine's Effects on the Brain & Body & How to Quit Smoking or Vaping"
 
-As seções são numeradas de forma **contínua** pela biblioteca inteira (01–32). Um capítulo novo continua
-a numeração (o próximo começaria em 33).
+As seções são numeradas de forma **contínua** pela biblioteca inteira (01–40). Um capítulo novo continua
+a numeração (o próximo começaria em 41).
 
 ---
 
