@@ -378,7 +378,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
      ============================================================ -->
 <template id="seed">
 
-  <article class="chapter" data-key="neuroplasticidade" data-num="01" data-tag="Foco &amp; atenção">
+  <article class="chapter" data-key="neuroplasticidade" data-rev="3" data-num="01" data-tag="Foco &amp; atenção">
     <p class="ch-kicker">Neurociência · Parte I</p>
     <h1>Neuroplasticidade</h1>
     <p class="ch-sub">O cérebro adulto muda. Mas, depois dos ~25 anos, só sob um conjunto químico preciso.</p>
@@ -627,7 +627,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-key="dopamina" data-num="02" data-tag="Busca &amp; impulso">
+  <article class="chapter" data-key="dopamina" data-rev="2" data-num="02" data-tag="Busca &amp; impulso">
     <p class="ch-kicker">Neurociência · Parte II</p>
     <h1>Dopamina &amp; Motivação</h1>
     <p class="ch-sub">Não é a química do prazer, é a química da <strong>procura</strong>. E funciona por uma dança entre pico e linha de base.</p>
@@ -830,7 +830,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-key="aprendizado" data-num="03" data-tag="Prática &amp; memória">
+  <article class="chapter" data-key="aprendizado" data-rev="1" data-num="03" data-tag="Prática &amp; memória">
     <p class="ch-kicker">Neurociência · Aprendizado</p>
     <h1>Como o cérebro aprende</h1>
     <p class="ch-sub">Terry Sejnowski: um <strong>único algoritmo</strong> move toda a motivação, e é a <strong>prática</strong> — não a teoria — que grava.</p>
@@ -974,7 +974,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
     </div>
   </article>
 
-  <article class="chapter" data-key="autocontrole" data-num="04" data-tag="Autocontrole &amp; metas">
+  <article class="chapter" data-key="autocontrole" data-rev="2" data-num="04" data-tag="Autocontrole &amp; metas">
     <p class="ch-kicker">Psicologia · Autocontrole</p>
     <h1>Autocontrole &amp; motivação</h1>
     <p class="ch-sub">Kentaro Fujita: autocontrole não é um músculo que se esgota, é uma <strong>caixa de ferramentas</strong> que se aprende. E a ferramenta mestra é a <strong>distância</strong>.</p>
@@ -1200,6 +1200,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
   /* chaves dos capítulos-semente já importados — permite publicar capítulos
      novos sem apagar as edições locais nem ressuscitar os que foram excluídos */
   var LS_SEEN='biblioteca:seedkeys';
+  var LS_META='biblioteca:seedmeta';
 
   var reader=document.getElementById('reader'),
       toc=document.getElementById('toc'),
@@ -1233,6 +1234,12 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
   function saveCh(){ localStorage.setItem(LS_CH, JSON.stringify(chapters)); }
   function loadSeen(){ try{ return JSON.parse(localStorage.getItem(LS_SEEN)||'null'); }catch(e){ return null; } }
   function saveSeen(k){ localStorage.setItem(LS_SEEN, JSON.stringify(k)); }
+  // metadados por capítulo-semente: { chave: { rev, hash } } — permite atualizar
+  // capítulos-semente quando publico uma versão nova, sem apagar edições do usuário
+  function loadMeta(){ try{ return JSON.parse(localStorage.getItem(LS_META)||'null'); }catch(e){ return null; } }
+  function saveMeta(m){ localStorage.setItem(LS_META, JSON.stringify(m)); }
+  // hash estável (djb2) do corpo, para detectar se o usuário editou o capítulo à mão
+  function hashStr(s){ s=s||''; var h=5381,i=s.length; while(i){ h=(h*33)^s.charCodeAt(--i); } return (h>>>0).toString(36); }
   function getRead(){ try{ return JSON.parse(localStorage.getItem(LS_READ)||'[]'); }catch(e){ return []; } }
   function markRead(id){ var r=getRead(); if(r.indexOf(id)===-1){ r.push(id); localStorage.setItem(LS_READ,JSON.stringify(r)); } }
 
@@ -1261,6 +1268,7 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
       list.push({
         id:uid(),
         key:a.getAttribute('data-key')||'',
+        rev:parseInt(a.getAttribute('data-rev'),10)||0,
         kicker:kicker,
         num:a.getAttribute('data-num')||'',
         tag:dec.value,
@@ -1452,27 +1460,64 @@ hr{border:none; border-top:1px solid var(--rule); margin:2.4em 0}
   chapters=loadCh();
   var seedList=seed();
 
+  // acha o capítulo-semente correspondente a um capítulo salvo (por chave, ou por
+  // título p/ bibliotecas antigas que salvaram antes de existir data-key)
+  function seedFor(c){
+    for(var i=0;i<seedList.length;i++){ if(seedList[i].key && seedList[i].key===c.key) return seedList[i]; }
+    for(var j=0;j<seedList.length;j++){ if(seedList[j].title===c.title) return seedList[j]; }
+    return null;
+  }
+
   if(!chapters || !chapters.length){
     /* 1ª visita: importa a semente inteira */
     chapters=seedList;
     saveSeen(seedList.map(function(s){ return s.key; }).filter(Boolean));
+    var m0={}; seedList.forEach(function(s){ if(s.key) m0[s.key]={rev:s.rev,hash:hashStr(s.body)}; });
+    saveMeta(m0);
     saveCh();
   }else{
-    /* já existe lista salva: mescla só os capítulos-semente inéditos */
+    var changed=false;
+
+    /* (A) mescla só os capítulos-semente inéditos (lógica original) */
     var seen=loadSeen();
     if(seen===null){
-      /* migração (quem salvou antes das chaves existirem): considera importado
-         todo capítulo-semente cujo título já está na lista salva */
+      /* quem salvou antes das chaves existirem: considera importado todo
+         capítulo-semente cujo título já está na lista salva */
       seen=seedList.filter(function(s){
         return chapters.some(function(c){ return c.title===s.title; });
       }).map(function(s){ return s.key; });
     }
-    var novos=0;
+    var meta=loadMeta() || {};
     seedList.forEach(function(s){
-      if(s.key && seen.indexOf(s.key)===-1){ chapters.push(s); seen.push(s.key); novos++; }
+      if(s.key && seen.indexOf(s.key)===-1){
+        chapters.push(s); seen.push(s.key);
+        meta[s.key]={rev:s.rev,hash:hashStr(s.body)};
+        changed=true;
+      }
     });
     saveSeen(seen);
-    if(novos) saveCh();
+
+    /* (B) atualiza capítulos-semente já existentes quando publico uma revisão
+       nova, SEM tocar no que o usuário editou à mão (detectado por hash). Para
+       bibliotecas anteriores a esta lógica, o corpo atual vira a linha de base. */
+    chapters.forEach(function(c){
+      var s=seedFor(c); if(!s) return;
+      var curHash=hashStr(c.body);
+      var mm=meta[s.key] || {rev:0,hash:curHash};   // bootstrap: assume não-editado
+      var edited=(curHash!==mm.hash);
+      if(!edited && s.rev>mm.rev){
+        // usuário não mexeu e há versão nova: atualiza o conteúdo, preserva id/posição
+        c.key=s.key; c.kicker=s.kicker; c.num=s.num; c.tag=s.tag; c.title=s.title; c.sub=s.sub; c.body=s.body;
+        meta[s.key]={rev:s.rev,hash:hashStr(s.body)};
+        changed=true;
+      }else{
+        meta[s.key]=mm;
+        if(c.key!==s.key){ c.key=s.key; changed=true; }  // grava a chave p/ próximas vezes
+      }
+    });
+    saveMeta(meta);
+
+    if(changed) saveCh();
   }
 
   renderReader(); buildTOC();
